@@ -13,17 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title:Text('TodoList'),backgroundColor: Colors.blue,),
-        body: Align(
-          alignment: Alignment.topCenter,
-          child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              margin: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.blue[50],
-                border: Border.all(color:Colors.black),
-              ),
-              child:  Text('aaa'),
+        body: SizedBox(
+          child: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.abc),
           ),
         ),
         bottomNavigationBar: BottomAppBar(
