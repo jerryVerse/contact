@@ -11,16 +11,44 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar( title: Text('ToDo-List'),
-                        backgroundColor: Colors.blue,),
-        body:Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
+        appBar: AppBar(
+          title: const Text('AppBar Demo'),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.add_alert),
+              tooltip: 'Show Snackbar',
+              onPressed: () {
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(const SnackBar(content: Text('This is a snackbar')));
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.navigate_next),
+              tooltip: 'Go to the next page',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) {
+                      return Scaffold(
+                        appBar: AppBar(title: const Text('Next page')),
+                        body: const Center(
+                          child: Text('This is the next page', style: TextStyle(fontSize: 24)),
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+        body:Row(
             children: [
-              Icon(Icons.star),
-              Icon(Icons.star),
-              Icon(Icons.star),
-          ]
+              Expanded(child: Container(color:Colors.blue)),
+              Container(color:Colors.green, width:200),
+            ]
         ),
         bottomNavigationBar: BottomAppBar(
                  child: Row(
